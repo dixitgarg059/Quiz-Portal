@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+	
+	{% block content %}
+	<div class="col-md-10 lab-list-col-10">
+<h1 class="text-h2-lightblue">Forming Sentences - 2</h1><div class="content" id="experiment-article-section-1-content">
+	 <div class="grid">
+        <div id="quiz">
+            <h1>Quiz</h1>
+            <hr style="margin-bottom: 10px">
+           <form  id="Q-1">
+                <p id="question"> <B>Q1.</B>. {{ q1.question}} </p>
+                <input type="radio" name="Q1" value="1" class="unc">{{ q1.choice1 }}
+                <input type="radio" name="Q1" value="2" class="unc">{{ q1.choice2 }}
+                <input type="radio" name="Q1" value="3" class="unc">{{ q1.choice3 }}
+                <input type="radio" name="Q1" value="4" class="unc">{{ q1.choice4 }}
+            </form>
+
+           <form  id="Q-2">
+                <p id="question"> <B>Q2.</B>{{ q2.question}} </p>
+                <input type="radio" name="Q2" value="1" class="unc">{{ q2.choice1 }}
+                <input type="radio" name="Q2" value="2" class="unc">{{ q2.choice2 }}
+                <input type="radio" name="Q2" value="3" class="unc">{{ q2.choice3 }}
+                <input type="radio" name="Q2" value="4" class="unc">{{ q2.choice4 }}
+            </form>
+
+           <form  id="Q-3">
+                <p id="question">  <B>Q3.</B>{{ q3.question}} </p>
+                <input type="radio" name="Q3" value="1" class="unc">{{ q3.choice1 }}
+                <input type="radio" name="Q3" value="2" class="unc">{{ q3.choice2 }}
+                <input type="radio" name="Q3" value="3" class="unc">{{ q3.choice3 }}
+                <input type="radio" name="Q3" value="4" class="unc">{{ q3.choice4 }}
+            </form>
+
+           <form  id="Q-4">
+                <p id="question"> <B>Q4.</B> {{ q4.question}} </p>
+                <input type="radio" name="Q4" value="1" class="unc">{{ q4.choice1 }}
+                <input type="radio" name="Q4" value="2" class="unc">{{ q4.choice2 }}
+                <input type="radio" name="Q4" value="3" class="unc">{{ q4.choice3 }}
+                <input type="radio" name="Q4" value="4" class="unc">{{ q4.choice4 }}
+            </form>
+
+            <form  id="Q-5">
+                <p id="question"><B>Q5.</B>  {{ q5.question}} </p>
+                <input type="radio" name="Q5" value="1" class="unc">{{ q5.choice1 }}
+                <input type="radio" name="Q5" value="2" class="unc">{{ q5.choice2 }}
+                <input type="radio" name="Q5" value="3" class="unc">{{ q5.choice3 }}
+                <input type="radio" name="Q5" value="4" class="unc">{{ q5.choice4 }}
+            </form>	
+        </div>
+        <!-- end of quiz div tag -->
+    </div>
+    <!-- end of grid div tag -->
+    <button id="refresh">Restart</button>
+<script src="./../static/js/jquery.js"></script>
+<button id="Submit">submit</button>
+<script type="text/javascript">
+   $('.unc').prop('checked', false);
+    $("#Submit").click(function(event){ 
+        console.log("hudhfnis");
+        if ($('input[name=Q1]:checked', '#Q-1').val()) {
+            A1 = $('input[name=Q1]:checked', '#Q-1').val();
+            console.log(A1);
+        }
+        else
+        {
+            A1=5;
+        }
+        if ($('input[name=Q2]:checked', '#Q-2').val()) {
+            A2 = $('input[name=Q2]:checked', '#Q-2').val();
+            console.log(A2);
+        }
+        else
+        {
+            A2=5;
+        }
+        if ($('input[name=Q3]:checked', '#Q-3').val()) {
+            A3 = $('input[name=Q3]:checked', '#Q-3').val();
+            console.log(A3);
+        }
+        else
+        {
+            A3=5;
+        }
+        if ($('input[name=Q4]:checked', '#Q-4').val()) {
+            A4 = $('input[name=Q4]:checked', '#Q-4').val();
+            console.log(A4);
+        }
+        else
+        {
+            A4=5;
+        }
+        if ($('input[name=Q5]:checked', '#Q-5').val()) {
+            A5 = $('input[name=Q5]:checked', '#Q-5').val();
+            console.log(A5);
+        }
+        else
+        {
+            A5=5;
+        }
+   $.ajax({
+        data : {
+            Q1:A1,
+            Q2:A2,
+            Q3:A3,
+            Q4:A4,
+            Q5:A5,
+        },
+        type : 'POST',
+        url : '/check'
+      })
+      .done(function(data) {
+        alert(data.output) 
+      });
+      event.preventDefault();
+});
+$("#refresh").click(function(event) {
+    location.reload();
+})
+</script>
+
+{% endblock %}		
+		
+	

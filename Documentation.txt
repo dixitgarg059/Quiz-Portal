@@ -1,0 +1,62 @@
+mmary or Description of the Function(intro)
+    Parameters:
+    An Introduction.html page
+    Returns:
+    Renders template of the page 
+   
+Summary or Description of the Function(theory)
+    Parameters:
+    An Theory.html page
+    Returns:
+    Renders template of the page 
+   
+Summary or Description of the Function(objective)
+    Parameters:
+    An Objective.html page
+    Returns:
+    Renders template of the page 
+   
+Summary or Description of the Function(experiment)
+    Parameters:
+    An Experiment.html page
+    Returns:
+    Renders template of the page and also questions after querying from database
+   
+Summary or Description of the Function(quiz)
+    Parameters:
+    An Quizzes.html page
+    Returns:
+    Renders template of the page  and also questions after querying from database.
+   
+Summary or Description of the Function(procedure)
+    Parameters:
+    An Procedure.html page
+    Returns:
+    Renders template of the page 
+   
+Summary or Description of the Function(feedback)
+    Parameters:
+    An Feedback.html page
+    Returns:
+    Renders template of the page 
+   
+Summary or Description of the Function (check)
+    Parameters:
+    An quiz post request
+    Takes the parameters sent by AJAX request through request.form
+    Verifying the quiz answers by using some comparisions.
+    Jsonifying the output(result of quiz) and returing back .
+
+Summary or Description of the Function(check1)
+    Parameters:
+    An experiment post request
+    Takes the parameters sent by AJAX request through request.form
+    Verifying the experiment answers by using some comparisions.
+    Jsonifying the output(result of experiment) and returing back.
+
+Summary or Description of the Function(check2)
+    Parameters:
+    An experiment post request
+    Takes the parameters sent by AJAX request through request.form
+    Verifying the experiment answers by using some comparisions.
+    Jsonifying the output(result of experiment1) and returing back.

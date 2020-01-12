@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="grid">
+        <div id="quiz">
+            <h1>Quiz</h1>
+            <hr style="margin-bottom: 10px">
+           <form  id="Q-1">
+                <p id="question">  {{ q1.question}} </p>
+                <input type="radio" name="Q1" value="1">{{ q1.choice1 }}
+                <input type="radio" name="Q1" value="2">{{ q1.choice2 }}
+                <input type="radio" name="Q1" value="3">{{ q1.choice3 }}
+                <input type="radio" name="Q1" value="4">{{ q1.choice4 }}
+            </form>
+
+           <form  id="Q-2">
+                <p id="question">  {{ q2.question}} </p>
+                <input type="radio" name="Q2" value="1">{{ q2.choice1 }}
+                <input type="radio" name="Q2" value="2">{{ q2.choice2 }}
+                <input type="radio" name="Q2" value="3">{{ q2.choice3 }}
+                <input type="radio" name="Q2" value="4">{{ q2.choice4 }}
+            </form>
+
+           <form  id="Q-3">
+                <p id="question">  {{ q3.question}} </p>
+                <input type="radio" name="Q3" value="1">{{ q3.choice1 }}
+                <input type="radio" name="Q3" value="2">{{ q3.choice2 }}
+                <input type="radio" name="Q3" value="3">{{ q3.choice3 }}
+                <input type="radio" name="Q3" value="4">{{ q3.choice4 }}
+            </form>
+
+           <form  id="Q-4">
+                <p id="question">  {{ q4.question}} </p>
+                <input type="radio" name="Q4" value="1">{{ q4.choice1 }}
+                <input type="radio" name="Q4" value="2">{{ q4.choice2 }}
+                <input type="radio" name="Q4" value="3">{{ q4.choice3 }}
+                <input type="radio" name="Q4" value="4">{{ q4.choice4 }}
+            </form>
+
+            <form  id="Q-5">
+                <p id="question">  {{ q5.question}} </p>
+                <input type="radio" name="Q5" value="1">{{ q5.choice1 }}
+                <input type="radio" name="Q5" value="2">{{ q5.choice2 }}
+                <input type="radio" name="Q5" value="3">{{ q5.choice3 }}
+                <input type="radio" name="Q5" value="4">{{ q5.choice4 }}
+            </form>
+
+            <hr style="margin-top: 50px">
+            <footer>
+                <p id="progress">Question x of y</p>
+            </footer>
+        </div>
+        <!-- end of quiz div tag -->
+    </div>
+    <!-- end of grid div tag -->
+<button id="refresh">Restart</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<button id="Submit">submit</button>
+<script type="text/javascript">
+    $("#Submit").click(function(event){ 
+        console.log("hudhfnis");
+        if ($('input[name=Q1]:checked', '#Q-1').val()) {
+            A1 = $('input[name=Q1]:checked', '#Q-1').val();
+            console.log(A1);
+        }
+        else
+        {
+            A1=5;
+        }
+        if ($('input[name=Q2]:checked', '#Q-2').val()) {
+            A2 = $('input[name=Q2]:checked', '#Q-2').val();
+            console.log(A2);
+        }
+        else
+        {
+            A2=5;
+        }
+        if ($('input[name=Q3]:checked', '#Q-3').val()) {
+            A3 = $('input[name=Q3]:checked', '#Q-3').val();
+            console.log(A3);
+        }
+        else
+        {
+            A3=5;
+        }
+        if ($('input[name=Q4]:checked', '#Q-4').val()) {
+            A4 = $('input[name=Q4]:checked', '#Q-4').val();
+            console.log(A4);
+        }
+        else
+        {
+            A4=5;
+        }
+        if ($('input[name=Q5]:checked', '#Q-5').val()) {
+            A5 = $('input[name=Q5]:checked', '#Q-5').val();
+            console.log(A5);
+        }
+        else
+        {
+            A5=5;
+        }
+   $.ajax({
+        data : {
+            Q1:A1,
+            Q2:A2,
+            Q3:A3,
+            Q4:A4,
+            Q5:A5,
+        },
+        type : 'POST',
+        url : '/check'
+      })
+      .done(function(data) {
+        alert(data.output) 
+      });
+      event.preventDefault();
+});
+$("#refresh").click(function(event) {
+    location.reload();
+})
+</script>
+</body>
+</html>

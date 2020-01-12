@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-md-10 lab-list-col-10">
+<h1 class="text-h2-lightblue">Forming Sentences - 2</h1><div class="content" id="experiment-article-section-1-content">	
+<link href="./../static/css/styled.css" >
+<script src="./../static/js/jquery.js"></script>
+    <div class="grid">
+        <div >
+            <h1 style="color:darkorange;" align="center">Experiment</h1>
+            <hr style="margin-bottom: 10px">
+            <select id="sel">
+              <option value="-1" selected>Select</option>
+              <option value="0">Compound</option>
+              <option value="1">Complex</option>
+            </select>
+           <form  id="Q-1">
+                <input type="radio" name="Q1" value= "for"  class="unc" onclick="dixit()">for
+                <input type="radio" name="Q1" value= "and" class="unc">and
+                <input type="radio" name="Q1" value= "but" class="unc">but
+                <input type="radio" name="Q1" value= "nor"  class="unc">nor
+                <input type="radio" name="Q1" value= "or"  class="unc">or
+                <input type="radio" name="Q1" value= "yet"  class="unc">yet
+                <input type="radio" name="Q1" value= "so" class="unc">so
+                <input type="radio" name="Q1" value= ";" class="unc">;
+            </form>
+        </div>
+        <style>
+        #exp{
+          margin-top:100px;
+          margin-left:50px;
+        }
+        #sel{
+            position:fixed;
+            top:33%;
+            right:33%;
+            left:auto;
+            width:17%;
+
+        }
+        #1{
+          padding:10px;
+        }
+
+         #first,#second{
+
+            font-size:30px;
+            color: navy;
+
+         }
+         #question{
+          margin-top:100px;
+          font-size:30px;
+          color:red;
+         }
+         #virdict{
+            font-size:30px;
+            display:inline;
+            margin-left:500px;
+
+         }
+         #questionofcomplex{
+          font-size:30px;
+          color:magenta;
+         }
+         #Q-2{
+          font-size:25px;
+          color:blue;
+         }
+         #Q-1{
+          position:absolute;
+          right:35%;
+          left:auto;
+          top:50%;
+          bottom:auto;
+          font-size:25px;
+          color:teal;
+         }
+         #answerofcomplex{
+          font-size:30px;
+          color:darkgreen;
+         }
+
+
+        </style>
+        <div id="exp"><div id="first" style="display:inline"></div><div id="question" style="display:inline-block;padding-right:10px;padding-left:10px;border-bottom:dotted black;width:100px;text-align:center" ></div><div id="second" style="display:inline"></div></div>
+        <form  id="Q-2">
+                <input type="radio" name="Q2" value= "1"  id="1"  class="unc">{{ op1 }}<br/>
+                <input type="radio" name="Q2" value= "2" id="2" class="unc">{{ op2 }}<br/>
+                <input type="radio" name="Q2" value= "3" id="3" class="unc">{{ op3 }}<br/>
+                <input type="radio" name="Q2" value= "4" id="4" class="unc">{{ op4 }}<br/>
+                <input type="radio" name="Q2" value= "5" id="5" class="unc">{{ op5 }}<br/>
+            </form>
+        </div>
+        <br/>
+        <h3><div id="answerofcomplex" style="display:inline; padding-left:10px;border-bottom:dotted black;width:100px"></div><div style="display:inline" id="questionofcomplex">{{ que }}</div></h3>
+<button id="submit" >submit</button> 
+<button id="submit1">submit</button> 
+<button id="refresh">Restart</button>
+<div id="virdict"></div>
+    <script type="text/javascript">
+
+    $('.unc').prop('checked', false);
+    document.getElementById("answerofcomplex").innerHTML="_____________________________";
+$('#sel').val('-1');
+      $('#Q-1').hide();
+      $('#first').hide();
+      $('#question').hide();
+      $('#second').hide();
+      // $('#first').html('');
+      // $('#second').html('');
+      $('#questionofcomplex').hide();
+      $('#Q-2').hide();
+      $('#submit').hide();
+      $('#submit1').hide();
+      $('#refresh').hide();
+      $('#answerofcomplex').hide();
+
+      var ch = "-1";
+      var a = "{{ q11.first }}";
+      var b = "{{ q11.second }}";
+
+      $('#sel').change(function(){
+          ch  = $('#sel').find(":selected").val();
+      $('#virdict').hide();
+
+          if(ch == "-1"){
+             $('#Q-1').hide();
+      $('#first').hide();
+      $('#question').hide();
+      $('#second').hide();
+      $('#virdict').hide();
+      // $('#first').html('');
+      // $('#second').html('');
+      $('#questionofcomplex').hide();
+      $('#Q-2').hide();
+      $('#refresh').hide();
+      $('#submit').hide();
+      $('#answerofcomplex').hide();
+      $('#submit1').hide();
+          }
+          else if(ch=="0"){
+            // $('#first').css({"color":"black"});
+            $('#first').html(a);
+            $('#second').html(b);
+            $('#Q-1').show();
+            $('#first').show();
+            $('#second').show();
+            $('#question').show();
+            $('#questionofcomplex').hide();
+            $('#Q-2').hide();
+      $('#submit1').hide();
+      $('#refresh').show();
+      $('#answerofcomplex').hide();
+      $('#submit').show();
+
+
+          }
+          else{
+            $('#1').html("{{ op1 }}"); 
+             $('#2').html( "{{ op2 }}");
+              $('#3').html( "{{ op3 }}");
+               $('#4').html( "{{ op4 }}");
+                $('#5').html( "{{ op5 }}");
+                $('#questionofcomplex').html( "{{ que }}")
+                 $('#1').show();
+                 $('#2').show();
+                 $('#3').show();
+                 $('#4').show();
+                 $('#5').show();
+                 $('#questionofcomplex').show();
+      $('#answerofcomplex').show();
+
+            $('#Q-1').hide();
+            $('#Q-2').show();            
+            $('#first').hide();
+            $('#second').hide();
+            $('#submit').hide();
+            $('#question').hide();
+      $('#refresh').show();
+      $('#submit1').show();
+                 
+          }
+      });
+     $("#Q-1").on('change',function(){
+        if ($('input[name=Q1]:checked', '#Q-1').val()) {
+            A1 = $('input[name=Q1]:checked', '#Q-1').val();
+            console.log(A1);
+        }
+        else
+        {
+            A1="";
+        }      
+        document.getElementById("question").innerHTML=A1;
+        A2=document.getElementById("first").innerHTML;
+        A3=document.getElementById("second").innerHTML;
+      
+     })
+     $("#submit").click(function(event){
+   $.ajax({
+        data : {
+            val:ch,
+            Q1:A1,
+            Q2:A2,
+            Q3:A3,
+        },
+        type : 'POST',
+        url : '/check1'
+      })
+      .done(function(data){
+              $('#virdict').show();
+
+        if(data.output == "Right Answer!!")
+       document.getElementById("virdict").style.color="Green";
+       else
+        document.getElementById("virdict").style.color="red";
+       document.getElementById("virdict").innerHTML=data.output; 
+     
+      });
+      event.preventDefault();
+    
+});
+                
+    var p2=0;
+     $("#Q-2").on('change',function(){
+        if ($('input[name=Q2]:checked', '#Q-2').val()) {
+            p1 = $('input[name=Q2]:checked', '#Q-2').val();
+            
+
+        if(p1 == "1")
+        {
+            p2="{{ op1 }}";
+         
+        } 
+        else if(p1 == "2")
+        {
+            p2="{{ op2 }}";
+
+        }
+        else if(p1 == "3")
+        {
+            p2="{{ op3 }}";
+          
+        }     
+        else if(p1 == "4")
+        {
+            p2="{{ op4 }}";
+          
+        }     
+        else if(p1 == "5")
+        {
+            p2="{{ op5 }}";
+          
+        }
+        document.getElementById("answerofcomplex").innerHTML=p2;
+              
+      }
+     })
+     $("#submit1").click(function(event){
+   $.ajax({
+        data : {
+            P1:p2,
+            P2:"{{ que }}",
+        },
+        type : 'POST',
+        url : '/check2'
+      })
+      .done(function(data){
+      $('#virdict').show();
+
+        if(data.output == "Right Answer!!")
+       document.getElementById("virdict").style.color="Green";
+       else
+        document.getElementById("virdict").style.color="red";
+       document.getElementById("virdict").innerHTML=data.output; 
+      });
+      event.preventDefault();
+
+  
+});
+     $("#refresh").click(function(event) {
+      location.reload();
+})  
+    </script>
+{% endblock %}
